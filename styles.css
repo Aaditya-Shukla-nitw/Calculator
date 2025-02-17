@@ -1,0 +1,90 @@
+:root{
+    --shape-diamond: polygon(25% 0%, 75% 0%, 100% 25%, 50% 100%, 0% 25%);
+    --shape-circle: circle(30%)
+}
+
+
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+#calculator{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto repeat(4, 1fr);
+    height: 400px;
+    width: 300px;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    gap:5px;
+    box-shadow: 5px 2px 3px 3px grey;
+
+}
+#calculator > div{
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 30px;
+}
+#display{
+    grid-column-start:1;
+    grid-column-end: 5;
+    height: 50px;
+    border-radius: 10px;
+    text-align: right;
+}
+#num, #eq, #op, #dec{
+    border-radius: 5px;
+    text-align: center;
+}
+#num, #dec{
+    
+    background-color: #f1f1f1;
+}
+#display{
+    background-color: #ffffff;
+    
+}
+#eq{
+    
+    background-color: rgb(68, 127, 255);
+}
+#eq:hover{
+    
+    background-color: rgba(68, 127, 255, 0.74);
+}
+
+#op{
+    background-color: orangered;
+}
+#op:hover{
+    background-color: rgba(255, 68, 0, 0.705);
+}
+#num:hover, #dec:hover{
+    
+    background-color: #f1f1f1da;
+}
+
+#bg{
+    object-fit: contain;
+    filter:invert(1);
+    clip-path: var(--shape-diamond)
+}
+#bg1{
+    object-fit: contain;
+    filter:blur(4px);
+    clip-path: var(--shape-circle);
+}
+img{
+    
+    height: 200px;
+    width: 300px;
+    margin:20px;
+}
+#bg2{
+    
+  mask-image: url(masker1.png);
+  mask-repeat: no-repeat;   
+}
