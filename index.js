@@ -15,7 +15,30 @@ function display(a){
 
         //Checks if the last char in display is an integer
         //if not then you cannot add a operator for ex. "12 +/ 12" is invalid
-        if(Number.isInteger(Number.parseInt(t.charAt(t.length-1)))){
+        function evaluateExpression(expr) {
+            try {
+                // Validate input to prevent security risks
+                if (!/^[0-9+\-*/().]+$/.test(expr)) {
+                    throw new Error("Invalid characters in expression");
+                }
+                
+                // Use Function constructor to evaluate the expression safely
+                return new Function('return ' + expr)();
+            } catch (error) {
+                console.error("Error evaluating expression:", error.message);
+                return null;
+            }
+        }
+        
+        // Example usage:
+        // console.log(evaluateExpression("2+3*4")); // Outputs: 14
+        // console.log(evaluateExpression("(2+3)*4")); // Outputs: 20
+        // console.log(t);
+        if(a=="="){
+            console.log(evaluateExpression(t));
+            screen.innerHTML = evaluateExpression(t);
+        }
+        else if(Number.isInteger(Number.parseInt(t.charAt(t.length-1)))){
             screen.innerHTML = screen.innerHTML + a;
             if(operator==""){
                 operator = a;
